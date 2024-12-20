@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Interactive Drawing Pad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="toolbar">
+            <button id="menuToggle" class="menu-toggle">☰</button>
+            
+            <div class="tools-container">
+                <div class="tool-group">
+                    <h3>Drawing Tools</h3>
+                    <div class="tool-section">
+                        <button id="pencil" class="tool active" title="Pencil (B)">✏️</button>
+                        <button id="brush" class="tool" title="Brush (N)">🖌️</button>
+                        <button id="eraser" class="tool" title="Eraser (E)">🧹</button>
+                        <button id="text" class="tool" title="Text (T)">📝</button>
+                    </div>
+                </div>
+                
+                <div class="tool-group">
+                    <h3>Shapes</h3>
+                    <div class="tool-section">
+                        <button id="square" class="tool" title="Square (S)">⬜</button>
+                        <button id="circle" class="tool" title="Circle (C)">⭕</button>
+                        <button id="triangle" class="tool" title="Triangle (R)">△</button>
+                        <button id="line" class="tool" title="Line (L)">📏</button>
+                        <button id="arrow" class="tool" title="Arrow (A)">➡️</button>
+                    </div>
+                </div>
+
+                <div class="tool-group">
+                    <h3>Style</h3>
+                    <div class="tool-section">
+                        <input type="color" id="colorPicker" value="#ffffff" title="Color">
+                        <div class="slider-container">
+                            <input type="range" id="sizeSlider" min="1" max="50" value="5">
+                            <span id="sizeValue">5px</span>
+                        </div>
+                        <button id="fillShape" class="tool" title="Fill Shape (F)">🪣</button>
+                        <select id="lineStyle" class="tool-select" title="Line Style">
+                            <option value="solid">Solid</option>
+                            <option value="dashed">Dashed</option>
+                            <option value="dotted">Dotted</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tool-group">
+                    <h3>Actions</h3>
+                    <div class="tool-section">
+                        <button id="undo" class="action" title="Undo (Ctrl+Z)">↩️</button>
+                        <button id="redo" class="action" title="Redo (Ctrl+Y)">↪️</button>
+                        <button id="clear" class="action" title="Clear All">🗑️</button>
+                        <button id="save" class="action" title="Save">💾</button>
+                        <select id="saveFormat" class="tool-select">
+                            <option value="png">PNG</option>
+                            <option value="jpg">JPG</option>
+                            <option value="svg">SVG</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="drawingCanvas"></canvas>
+        </div>
+
+        <div class="floating-tools">
+            <button id="undoFloat" class="action" title="Undo">↩️</button>
+            <button id="redoFloat" class="action" title="Redo">↪️</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
