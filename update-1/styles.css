@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-primary: #2a2a2a;
+    --bg-secondary: #333333;
+    --bg-tertiary: #444444;
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --accent-color: #4CAF50;
+    --toolbar-height: 120px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    background-color: var(--bg-secondary);
+    padding: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.tools-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tool-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tool-group h3 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 0.5rem;
+}
+
+.tool-section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button.tool, button.action {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+button.tool:hover, button.action:hover {
+    background-color: var(--bg-primary);
+    transform: translateY(-2px);
+}
+
+button.tool.active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+#colorPicker {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--bg-tertiary);
+}
+
+.slider-container {
+    background-color: var(--bg-tertiary);
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#sizeSlider {
+    width: 100px;
+    accent-color: var(--accent-color);
+}
+
+#sizeValue {
+    min-width: 3em;
+    color: var(--text-secondary);
+}
+
+.tool-select {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.canvas-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+}
+
+#drawingCanvas {
+    background-color: var(--bg-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: crosshair;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.floating-tools {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .tools-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-secondary);
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .tools-container.show {
+        display: block;
+    }
+
+    .floating-tools {
+        display: flex;
+    }
+
+    .tool-group {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (pointer: coarse) {
+    button.tool, button.action {
+        min-width: 48px;
+        min-height: 48px;
+        font-size: 1.4rem;
+    }
+
+    #sizeSlider {
+        width: 150px;
+        height: 24px;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        position: fixed;
+        width: 100%;
+    }
+}
